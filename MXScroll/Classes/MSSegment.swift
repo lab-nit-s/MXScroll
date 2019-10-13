@@ -804,7 +804,7 @@ public class MSSegmentControl: UIControl {
         return CGRect(x: self.segmentWidth * CGFloat(self.selectedSegmentIndex), y: 0, width: self.segmentWidth, height: self.frame.height)
     }
     
-    private func updateSegmentsRects() {
+    public func updateSegmentsRects() {
         self.scrollView.contentInset = UIEdgeInsets.zero
         self.layoutIfNeeded()
         self.scrollView.frame = CGRect(origin: CGPoint.zero, size: self.frame.size)
