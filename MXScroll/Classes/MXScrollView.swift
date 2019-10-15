@@ -28,6 +28,8 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
   //  SegmentView
   var segmentView: T?
   var segmentViewHeight: CGFloat = 40
+  var segmentLeftGap: CGFloat = 0
+  var segmentRightGap: CGFloat = 0
 
   //  ThirdPart
   var contentView: MXContentView!
@@ -167,8 +169,8 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
   func addSegmentView(_ segment: T, frame: CGRect) {
     // only if  the contentView's count > 1 segment will show
     
-    let left: CGFloat = 25.0
-    let right: CGFloat = 25.0
+    let left: CGFloat = segmentLeftGap
+    let right: CGFloat = segmentRightGap
     
     if contentViews.count > 1 {
       segmentView = segment
@@ -179,7 +181,7 @@ class MXScrollView<T: MXSegmentProtocol>: UIScrollView where T: UIView {
       segment.easy.layout(
         Left(left),
         Right(right),
-        Width().like(containerView),
+        Width(-left-right).like(containerView),
         Height(segmentViewHeight),
         Top(headerViewOffsetHeight ?? 0).to(view!, .bottom)
       )
