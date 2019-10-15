@@ -112,6 +112,9 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
         }
     }
     
+    public var segmentLeftGap: CGFloat = 0.0
+    public var segmentRightGap: CGFloat = 0.0
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -234,6 +237,8 @@ public class MXViewController<T: MXSegmentProtocol>: UIViewController where T: U
             }
         }
         segmentedScrollView.listenContentOffset()
+        segmentedScrollView.segmentLeftGap = segmentLeftGap
+        segmentedScrollView.segmentRightGap = segmentRightGap
         segmentedScrollView.addSegmentView(segmentView, frame: view.bounds)
     }
     
